@@ -1,14 +1,11 @@
 package Supermercado;
 
-import java.util.Scanner;
-
-public class AppCaixaSupermercado {
+public class AppSupermarket {
 
 	public static void main(String[] args) {
 		
-		Caixa mostrarCaixa = new Caixa();
-		mostrarCaixa.iniciarCaixa();
+		Application object_Application = new Application();
+		object_Application.startApplication();
 
 	}
-
 }

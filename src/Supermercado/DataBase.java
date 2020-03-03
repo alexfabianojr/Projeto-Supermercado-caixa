@@ -3,34 +3,34 @@ package Supermercado;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BancoDeDados {
-	private double valorArrecadado; //utilizar o private por segurança (dados sensíveis)
-	private List<Produto> produtosRegistrados;
+public class DataBase {
+	private double amountCollected; 
+	private List<Product> registeredProduct;
 	
-	public BancoDeDados() {
-		valorArrecadado = 0;
-		produtosRegistrados = new ArrayList<Produto>();
+	public DataBase() {
+		amountCollected = 0;
+		registeredProduct = new ArrayList<Product> ();
 	}
 	
-	public void incrementaValorArrecadado( double valorProduto ) {
-		valorArrecadado += valorProduto;
+	public void incrementAmountCollected ( double productPrice ) {
+		amountCollected += productPrice;
 	}
 	
-	public double getValorArrecadado() { //buscando dentro do encapsulamento
-		return valorArrecadado;
+	public double getValorArrecadado() { 
+		return amountCollected;
 	}
 	
-	public List<Produto> getProdutosRegistrados (){ //"array" sem limite de dados
-		return produtosRegistrados;
+	public List<Product> getProdutosRegistrados (){ 
+		return registeredProduct;
 	}
-	public double buscaValorProdutoPeloCodigo(int codigo) {
-		return produtosRegistrados.get(codigo).valor;
+	public double buscaValorProdutoPeloCodigo (int codigo) {
+		return registeredProduct.get(codigo).productValue;
 	}
 	
-	public void adicionarProduto(Produto produto) {
-		int codigo = produtosRegistrados.size();
-		produto.codigo = codigo;
+	public void adicionarProduto (Product produto) {
+		int codigo = registeredProduct.size();
+		produto.productCode = codigo;
 		
-		produtosRegistrados.add(produto);
+		registeredProduct.add(produto);
 	}
 }

@@ -1,41 +1,44 @@
 package Supermercado;
 import java.util.Scanner;
 
-public class Caixa {
+public class Application {
 	Scanner sc = new Scanner (System.in);
-	private BancoDeDados bancoDeDados = new BancoDeDados();
+	private DataBase object_DataBase = new DataBase();
 
-	public void iniciarCaixa() {
-		boolean estadoLoop = true;
-		int interruptor;
+	public void startApplication() {
+		boolean loopState = true;
+		int switchChoose;
 		
-		while (estadoLoop) {
+		while (loopState) {
 			
-			System.out.println("1 - Registrar novo produto");
-			System.out.println("2 - Realizar uma venda");
-			System.out.println("3 - Total arrecadado");
-			interruptor = sc.nextInt();
+			System.out.println("1 - Registrar Novo Produto");
+			System.out.println("2 - Realizar Venda");
+			System.out.println("3 - Total Arrecadado");
+			System.out.println("0 - Encerrar");
 			
-			switch (interruptor) {
+			switchChoose = sc.nextInt();
+			
+			switch (switchChoose) {
 				
 				case 0:
-					estadoLoop = false;
+					sc.close();
+					System.exit(0);
 					break;
 				
 				case 1:
-					Produto novoProduto = new Produto();
+					Product object_Product = new Product();
 					
 					System.out.println("Digite o nome do produto");
-					String nome = sc.nextLine();
+					String newProductName = sc.nextLine();
 					sc.nextLine();
 					
 					System.out.println("Digite o valor do produto");
-					double valor = sc.nextDouble();
+					double newProductValue = sc.nextDouble();
 					
-					novoProduto.nome = nome;
-					novoProduto.valor = valor;
+					object_Product.productName = newProductName;
+					object_Product.productValue = newProductValue;
 					
-					bancoDeDados.adicionarProduto(novoProduto);
+					object_DataBase.adicionarProduto(object_Product);
 					
 					break;
 				
@@ -45,12 +48,12 @@ public class Caixa {
 					
 					int codigo = sc.nextInt();
 					
-					double armazenaValorProduto = bancoDeDados.buscaValorProdutoPeloCodigo(codigo);			
-					bancoDeDados.incrementaValorArrecadado(armazenaValorProduto);
+					double armazenaValorProduto = object_DataBase.buscaValorProdutoPeloCodigo(codigo);			
+					object_DataBase.incrementAmountCollected(armazenaValorProduto);
 					break;
 				
 				case 3:
-					System.out.println("O valor total do caixa é: " + bancoDeDados.getValorArrecadado());
+					System.out.println("O valor total do caixa é: " + object_DataBase.getValorArrecadado());
 					break;
 			}
 		}

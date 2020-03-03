@@ -1,7 +1,9 @@
 package Supermercado;
 
-public class Produto {
-	public int codigo;
-	public String nome;
-	public double valor;
+public class Product {
+	
+	public int productCode;
+	public String productName;
+	public double productValue;
+	
 	}
